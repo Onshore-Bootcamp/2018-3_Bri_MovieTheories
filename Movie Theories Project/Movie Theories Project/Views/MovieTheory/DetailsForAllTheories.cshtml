@@ -1,0 +1,86 @@
+﻿@using Movie_Theories_Project.Models
+@model MovieTheoryPO
+@{
+    ViewBag.Title = "DetailsForAllTheories";
+}
+    <h2>Movie Theory Details</h2>
+    @using (Html.BeginForm("DetailsForAllTheories", "MovieTheory"))
+    {
+        <div class="form-horizontal">
+            @if (Session["Role"] == null)
+            {
+                <br />@Html.LabelFor(model => Model.TitleOfTheory, "Title of Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.TitleOfTheory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Theory, "Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Theory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Status, "Status:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Status)
+                </div>
+            }
+            else if ((int)Session["Role"] == 1)
+            {
+                <br />@Html.LabelFor(model => Model.TitleOfTheory, "Title of Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.TitleOfTheory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Theory, "Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Theory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Status, "Status:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Status)
+                </div>
+
+                <br />@Html.ActionLink("Movie Associated with the Theory", "MovieDetails", "Movie", new { id = Model.MovieId }, new { @class = "btn btn-info" })<br />
+            }
+            else if ((int)Session["Role"] == 2)
+            {
+                <br />@Html.LabelFor(model => Model.TitleOfTheory, "Title of Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.TitleOfTheory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Theory, "Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Theory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Status, "Status:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Status)
+                </div>
+
+                <br />@Html.ActionLink("Movie Associated with the Theory", "MovieDetails", "Movie", new { id = Model.MovieId }, new { @class = "btn btn-info" })<br />
+                
+                <br />@Html.ActionLink("Edit Movie Theory", "UpdateMovieTheory", "MovieTheory", new { id = Model.MovieTheoryID }, new { @class = "btn btn-warning" })<br />
+            }
+            else
+            {
+                <br />@Html.LabelFor(model => Model.TitleOfTheory, "Title of Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.TitleOfTheory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Theory, "Theory:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Theory)
+                </div>
+                <br />@Html.LabelFor(model => Model.Status, "Status:")
+                <div class="form-control">
+                    @Html.DisplayFor(model => Model.Status)
+                </div>
+
+                <br />@Html.ActionLink("Movie Associated with the Theory", "MovieDetails", "Movie", new { id = Model.MovieId }, new { @class = "btn btn-info" })<br />
+
+                <br />@Html.ActionLink("Edit Movie Theory", "UpdateMovieTheory", "MovieTheory", new { id = Model.MovieTheoryID }, new { @class = "btn btn-warning" })<br />
+
+                @Html.HiddenFor(model => Model.MovieId)
+                <br />@Html.ActionLink("Delete Movie Theory", "DeleteMovieTheory", "MovieTheory", new { id = Model.MovieTheoryID }, new { @class = "btn btn-danger", onclick = "return confirm('Are You Sure You Wish to Delete this Theory?');" })<br />
+
+            }
+        </div>
+    }
+    <br />@Html.ActionLink("Return to All Movie Theories", "AllMovieTheories", "MovieTheory", null, new { @class = "btn btn-primary" })

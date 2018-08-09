@@ -1,0 +1,42 @@
+﻿@using Movie_Theories_Project.Models
+@model UserPO
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+@if (Session["Role"] != null && (int)Session["Role"] == 3 || (string)Session["Username"] == Model.Username)
+{
+    <h2 align="center">User Details</h2>
+
+    <div class="form-horizontal">
+        @Html.HiddenFor(model => Model.Password)
+        @Html.LabelFor(model => Model.Username, "Username:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.Username)
+        </div>
+        <br />@Html.LabelFor(model => Model.FirstName, "First Name:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.FirstName)
+        </div>
+        <br />@Html.LabelFor(model => Model.RoleName, "Role Name:")
+        <div class="form-control">
+            @Html.HiddenFor(model => Model.Role)
+            @Html.DisplayFor(model => Model.RoleName)
+        </div>
+        <br />@Html.LabelFor(model => Model.Email, "Email:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.Email)
+        </div>
+        @if ((int)Session["Role"] == 3)
+        {
+            <br />@Html.ActionLink("Edit User", "UpdateUser", "Account", new { userID = Model.UserId }, new { @class = "btn btn-warning" })<br />
+
+            <br />@Html.ActionLink("Delete User", "DeleteUser", "Account", new { userID = Model.UserId }, new { @class = "btn btn-danger", onclick = "return confirm('Are You Sure You Wish to Delete this User?');" })
+        }
+        else if ((string)Session["Username"] == Model.Username)
+        {
+            <br />@Html.ActionLink("Edit User", "UpdateUser", "Account", new { userID = Model.UserId }, new { @class = "btn btn-warning" })<br />
+        }
+    </div>
+    <br />@Html.ActionLink("Return to All Users", "AllUsers", "Account", null, new { @class = "btn btn-primary" })
+}

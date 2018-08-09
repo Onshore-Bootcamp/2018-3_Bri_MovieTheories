@@ -1,0 +1,6 @@
+C:\Users\Bri\source\repos\Movie Theories Project\MovieProjectBLL\bin\Debug\MovieProjectBLL.dll
+C:\Users\Bri\source\repos\Movie Theories Project\MovieProjectBLL\bin\Debug\MovieProjectBLL.pdb
+C:\Users\Bri\source\repos\Movie Theories Project\MovieProjectBLL\obj\Debug\MovieProjectBLL.csprojAssemblyReference.cache
+C:\Users\Bri\source\repos\Movie Theories Project\MovieProjectBLL\obj\Debug\MovieProjectBLL.csproj.CoreCompileInputs.cache
+C:\Users\Bri\source\repos\Movie Theories Project\MovieProjectBLL\obj\Debug\MovieProjectBLL.dll
+C:\Users\Bri\source\repos\Movie Theories Project\MovieProjectBLL\obj\Debug\MovieProjectBLL.pdb

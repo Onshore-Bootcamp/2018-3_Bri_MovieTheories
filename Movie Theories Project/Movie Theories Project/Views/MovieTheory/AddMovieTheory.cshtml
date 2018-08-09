@@ -1,0 +1,34 @@
+﻿@using Movie_Theories_Project.Models
+@model MovieTheoryPO
+@{
+    ViewBag.Title = "AddMovieTheory";
+}
+
+@if (Session["Role"] != null)
+{
+    <h2>Add Movie Theory</h2>
+    using (Html.BeginForm("AddMovieTheory", "MovieTheory", FormMethod.Post))
+    {
+        <div class="form-horizontal">
+            @Html.LabelFor(model => Model.TitleOfTheory, "Title of Theory*:")
+            <div class="form-group">
+                @Html.TextBoxFor(model => Model.TitleOfTheory, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.TitleOfTheory, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => Model.Theory, "Theory*:")
+            <div class="form-group">
+                @Html.TextAreaFor(model => Model.Theory, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.Theory, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => Model.Status, "Status*:")
+            <div class="form-group">
+                @Html.DropDownListFor(model => Model.Status, (List<SelectListItem>)ViewBag.StatusDropDown, "--Select Status--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br /><div class="form-group">
+            @Html.HiddenFor(model => Model.MovieId)
+            <input class="btn btn-success" type="submit" value="Add Movie Theory" />
+        </div>
+    }
+}

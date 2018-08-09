@@ -1,0 +1,35 @@
+﻿@using Movie_Theories_Project.Models
+@model MovieTheoryPO
+@{
+    ViewBag.Title = "UpdateMovieTheory";
+}
+
+@if (Session["Role"] != null && (int)Session["Role"] == 2 || Session["Role"] != null && (int)Session["Role"] == 3)
+{
+    <h2>Edit Movie Theory</h2>
+    using (Html.BeginForm("UpdateMovieTheory", "MovieTheory", FormMethod.Post))
+    {
+        <div class="form-horizontal">
+            @Html.LabelFor(model => Model.TitleOfTheory, "Title of Theory*:")
+            <div class="form-group">
+                @Html.HiddenFor(model => Model.MovieTheoryID)
+                @Html.HiddenFor(model => Model.MovieId)
+                @Html.TextBoxFor(model => Model.TitleOfTheory, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.TitleOfTheory, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => Model.Theory, "Theory*:")
+            <div class="form-group">
+                @Html.TextAreaFor(model => Model.Theory, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.Theory, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => Model.Status, "Status*:")
+            <div class="form-group">
+                @Html.DropDownListFor(model => Model.Status, (List<SelectListItem>)ViewBag.StatusDropDown, "Select Status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => Model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br /><div class="form-group">
+            <input class="btn btn-warning" type="submit" value="Edit Movie Theory" />
+        </div>
+    }
+}

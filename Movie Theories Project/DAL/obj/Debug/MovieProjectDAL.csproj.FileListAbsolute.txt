@@ -1,0 +1,7 @@
+c:\users\bri\source\repos\Movie Theories Project\DAL\bin\Debug\DAL.dll.config
+c:\users\bri\source\repos\Movie Theories Project\DAL\bin\Debug\DAL.dll
+c:\users\bri\source\repos\Movie Theories Project\DAL\bin\Debug\DAL.pdb
+c:\users\bri\source\repos\Movie Theories Project\DAL\obj\Debug\MovieProjectDAL.csproj.CoreCompileInputs.cache
+c:\users\bri\source\repos\Movie Theories Project\DAL\obj\Debug\DAL.dll
+c:\users\bri\source\repos\Movie Theories Project\DAL\obj\Debug\DAL.pdb
+C:\Users\Bri\source\repos\Movie Theories Project\DAL\obj\Debug\MovieProjectDAL.csprojAssemblyReference.cache

@@ -1,0 +1,46 @@
+﻿@using Movie_Theories_Project.Models;
+@model MoviePO
+@{
+    ViewBag.Title = "MovieTheoryIndex";
+}
+
+@if (Session["Role"] != null)
+{
+    <br />@Html.ActionLink("Add a Movie Theory", "AddMovieTheory", "MovieTheory", new { movieId = Model.MovieId }, new { @class = "btn btn-success" })
+
+    <h2 align="center">Movie Theories</h2>
+    <table class="table table-bordered table-striped" style="background-color: #baffb3">
+        <thead>
+            <tr style="background-color: green">
+                <th>
+                    Theory Title
+                </th>
+                <th>
+                    View Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MovieTheoryPO displayObject in Model.MovieTheories)
+            {
+                <tr>
+                    <td>
+                        @displayObject.TitleOfTheory
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => displayObject.Theory)
+                        @Html.HiddenFor(model => displayObject.Status)
+                        @Html.HiddenFor(model => displayObject.MovieId)
+                        @Html.ActionLink("Movie Theory Details", "DetailsForAllTheories", "MovieTheory", new { id = displayObject.MovieTheoryID }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+    @Html.ActionLink("Return to All Movies", "Index", "Movie", null, new { @class = "btn btn-primary" })<br />
+
+    <br />@Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+}

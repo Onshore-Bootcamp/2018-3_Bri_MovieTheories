@@ -1,0 +1,45 @@
+﻿@using Movie_Theories_Project.Models
+@model MoviePO
+@{
+    ViewBag.Title = "MovieDetails";
+}
+
+@if (Session["Role"] != null)
+{
+    <h2>Movie Details</h2>
+
+    <div class="form-horizontal">
+        @Html.LabelFor(model => Model.Title, "Title:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.Title)
+        </div>
+        <br />@Html.LabelFor(model => Model.Director, "Director:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.Director)
+        </div>
+        <br />@Html.LabelFor(model => Model.OpeningWeekend, "Money Made on Opening Weekend:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.OpeningWeekend)
+        </div>
+        <br />@Html.LabelFor(model => Model.YearReleased, "Year Released:")
+        <div class="form-control">
+            @Html.DisplayFor(model => Model.YearReleased)
+        </div>
+        <br />@Html.ActionLink("All Theories Related to this Movie", "MovieTheoryIndex", "MovieTheory", new { id = Model.MovieId }, new { @class = "btn btn-info" })<br />
+
+        @if ((int)Session["Role"] == 3)
+        {
+            <br />@Html.ActionLink("Edit Movie", "UpdateMovie", "Movie", new { id = Model.MovieId }, new { @class = "btn btn-warning" })<br />
+
+            <br />@Html.ActionLink("Delete Movie", "DeleteMovie", "Movie", new { id = Model.MovieId }, new { @class = "btn btn-danger", onclick = "return confirm('Are You Sure You Wish to Delete this Movie?');" })
+        }
+        else if ((int)Session["Role"] == 2)
+        {
+            <br />@Html.ActionLink("Edit Movie", "UpdateMovie", "Movie", new { id = Model.MovieId }, new { @class = "btn btn-warning" })<br />
+        }
+    </div>
+
+    <br />@Html.ActionLink("Return to All Movies", "Index", "Movie", null, new { @class = "btn btn-primary" })<br />
+
+    <br />@Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+}

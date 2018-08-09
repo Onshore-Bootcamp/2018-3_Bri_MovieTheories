@@ -1,0 +1,2 @@
+c:\users\bri\source\repos\Movie Theories Project\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+c:\users\bri\source\repos\Movie Theories Project\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache

@@ -1,0 +1,53 @@
+﻿@using Movie_Theories_Project.Models;
+@model List<MovieTheoryPO>
+@{
+    ViewBag.Title = "AllMovieTheories";
+}
+
+    <div>
+        <h2 align="center">The Status Usage Percents:</h2>
+        @foreach (KeyValuePair<string, float> percents in ViewBag.StatusPercent)
+        {
+            <div align="center">
+                <h3>@percents.ToString();</h3>
+            </div>
+        }
+    </div>
+
+    <h1 align="center">All Movie Theories</h1>
+    <table class="table table-bordered table-striped" style="background-color: #ffb3ba">
+        <thead>
+            <tr style="background-color: hotpink">
+                <th>
+                    Movie Theory Title
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    View Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MovieTheoryPO displayObject in Model)
+            {
+                <tr>
+                    <td>
+                        @displayObject.TitleOfTheory
+                    </td>
+                    <td>
+                        @displayObject.Status
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => displayObject.Theory)
+                        @Html.HiddenFor(model => displayObject.MovieId)
+                        @Html.ActionLink("Movie Theory Details", "DetailsForAllTheories", "MovieTheory", new { id = displayObject.MovieTheoryID }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>

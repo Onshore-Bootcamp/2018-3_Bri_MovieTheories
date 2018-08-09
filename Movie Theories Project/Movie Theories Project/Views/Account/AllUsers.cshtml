@@ -1,0 +1,62 @@
+﻿@using Movie_Theories_Project.Models;
+@model List<UserPO>
+@{
+    ViewBag.Title = "AllUsers";
+}
+
+@if (Session["Role"] != null)
+{
+    <h2 align="center">All Users</h2>
+    <table class="table table-bordered table-striped" style="background-color: #bae1ff">
+        <thead>
+            <tr style="background-color: blue">
+                <th>
+                    Username
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Role Name
+                </th>
+                <th>
+                    User Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (UserPO displayObject in Model)
+            {
+                @Html.HiddenFor(model => displayObject.Email)
+                @Html.HiddenFor(model => displayObject.Password)
+                @Html.HiddenFor(model => displayObject.Role)
+                <tr>
+                    <td>
+                        @displayObject.Username
+                    </td>
+                    <td>
+                        @displayObject.FirstName
+                    </td>
+                    <td>
+                        @displayObject.RoleName
+                    </td>
+                    @if ((int)Session["Role"] == 3 || (string)Session["Username"] == displayObject.Username)
+                    {
+                        <td>
+                            @Html.ActionLink("User Details", "UserDetails", "Account", new { userID = displayObject.UserId }, new { @class = "btn btn-primary" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+
+    @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+}

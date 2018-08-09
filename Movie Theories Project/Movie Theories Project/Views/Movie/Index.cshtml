@@ -1,0 +1,45 @@
+﻿@using Movie_Theories_Project.Models;
+@model List<MoviePO>
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["Role"] != null)
+{
+    <br />@Html.ActionLink("Add a Movie", "AddMovie", "Movie", null, new { @class = "btn btn-success" })
+
+    <h2 align="center">Movies</h2>
+    <table class="table table-bordered table-striped" style="background-color: #ffd2b3">
+        <thead>
+            <tr style="background-color: darkorange">
+                <th>
+                    Movie Title
+                </th>
+                <th>
+                    View Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MoviePO displayObject in Model)
+            {
+                <tr>
+                    <td>
+                        @displayObject.Title
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => displayObject.Director)
+                        @Html.HiddenFor(model => displayObject.OpeningWeekend)
+                        @Html.HiddenFor(model => displayObject.YearReleased)
+                        @Html.ActionLink("Movie Details", "MovieDetails", "Movie", new { id = displayObject.MovieId }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+
+    @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+}
